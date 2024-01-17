@@ -1,0 +1,20 @@
+"order","family","genus","species","iucn2020_binomial","phylacine_binomial","adult_mass_g","adult_body_length_mm","generation_length_d","litter_size_n","litters_per_year_n","dispersal_km","det_diet_breadth_n","habitat_breadth_n"
+"Cetartiodactyla","Cervidae","Alces","alces","Alces alces","Alces alces",359750,2972.852,3566.176,1.28,1.117,26.984,1,2
+"Carnivora","Canidae","Canis","lupus","Canis lupus","Canis lupus",29190.755,1270,2883.257,4.98,0.82,33.953,1,7
+"Rodentia","Castoridae","Castor","fiber","Castor fiber","Castor fiber",19000,766.413,3294.125,3.055,1,5.353,1,2
+"Cetartiodactyla","Cervidae","Dama","dama","Dama dama","Dama dama",63612.305,1750,3286.095,1.07,1,10.405,1,3
+"Carnivora","Mustelidae","Gulo","gulo","Gulo gulo","Gulo gulo",12792.49,810,2622.302,2.84,0.5,4.307,4,4
+"Lagomorpha","Leporidae","Lepus","timidus","Lepus timidus","Lepus timidus",3027.715,559.5,1306.156,3.16,2.1,1.949,1,5
+"Carnivora","Mustelidae","Lutra","lutra","Lutra lutra","Lutra lutra",7809.345,753.97,2772.962,2.035,1,17.795,3,5
+"Carnivora","Felidae","Lynx","lynx","Lynx lynx","Lynx lynx",21150,1075.6,3338.239,2.25,1,28.994,1,5
+"Carnivora","Mustelidae","Martes","martes","Martes martes","Martes martes",1299.995,518.505,2100.94,3.8,1,1.225,2,2
+"Carnivora","Mustelidae","Mustela","erminea","Mustela erminea","Mustela erminea",110.33,270.325,1078.778,6.755,1,2.207,1,6
+"Carnivora","Mustelidae","Mustela","nivalis","Mustela nivalis","Mustela nivalis",49.75,260,1194.194,5.085,1.5,1.494,1,7
+"Carnivora","Mustelidae","Mustela","putorius","Mustela putorius","Mustela putorius",809,409.46,1652.464,7.68,1.26,5.859,3,6
+"Carnivora","Canidae","Nyctereutes","procyonoides","Nyctereutes procyonoides","Nyctereutes procyonoides",4232,563.69,2091.937,6.3,1,2.344,3,4
+"Cetartiodactyla","Cervidae","Odocoileus","virginianus","Odocoileus virginianus","Odocoileus virginianus",65320,1806.845,2713.883,1.71,1,10.558,1,9
+"Rodentia","Sciuridae","Pteromys","volans","Pteromys volans","Pteromys volans",140,174,1507.081,2.6,1.5,0.359,3,1
+"Rodentia","Sciuridae","Sciurus","vulgaris","Sciurus vulgaris","Sciurus vulgaris",328.875,213.17,1612.753,4.43,2,0.575,3,2
+"Cetartiodactyla","Suidae","Sus","scrofa","Sus scrofa","Sus scrofa",135000,1574.995,2656.07,5.567,1.5,15.739,1,7
+"Carnivora","Canidae","Vulpes","lagopus","Vulpes lagopus","Vulpes lagopus",3600,619.905,1871.187,8.12,1,12.176,1,1
+"Carnivora","Canidae","Vulpes","vulpes","Vulpes vulpes","Vulpes vulpes",4580.3,630,2105.397,4.732,1,2.448,2,6
