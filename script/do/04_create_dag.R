@@ -17,6 +17,7 @@ SEM_dag <-
   sdT [pos="0.65,0.0"]
   Async -> Scom
   Spop -> Scom
+  Spop <-> Async
   FDis -> Async
   FDis <-> CWPoL
   MPD <-> CWPoL
