@@ -73,7 +73,7 @@ plot_sem <- function(
         str_replace_all( "~~|log\\(|[[:punct:]]", ""),
       significance = ifelse(P.Value <= 0.05, "grey30", "grey80"),
       dir_relation = as.integer(ifelse(Std.Estimate < 0, 2, 1)),
-      edge_width = ifelse(Std.Estimate < 0.15, 0.15, abs(Std.Estimate))
+      edge_width = ifelse(abs(Std.Estimate) < 0.15, 0.15, abs(Std.Estimate))
     )
 
   tidy_dag$data <- left_join(tidy_dag$data, sem_coefs_tidy, by = c("name", "to")) |>
@@ -193,13 +193,44 @@ plot_sem_2 <- function(
   tidy_dag <- tidy_dagitty(sem_dag) %>%
     mutate(
       model_part = factor(str_replace_all(name, var_groups),
-                           levels = model_parts)
+                          levels = model_parts)
       # col_arrow = ifelse(direction == "<->", "#905000", 'grey30')
     )
 
-  # reorder MPD <-> FDis
-  tidy_dag$data[8,1:3] <- tidy_dag$data[9,1:3]
-  tidy_dag$data[8,5:7] <- tidy_dag$data[4,5:7]
+
+  # reorder MPD <-> FDis to be able to join tidy_dag and sem_coefs_tidy
+
+  # cor_row <- paste(tidy_dag$data$name, tidy_dag$data$to) %>%
+  #   str_detect(pattern = "FDis MPD") %>%
+  #   which()
+  #
+  # mpd_row <- which(tidy_dag$data$name == "MPD")[1]
+  # FDis_row <- which(tidy_dag$data$to == "FDis")[1]
+  #
+  #
+  # tidy_dag$data[cor_row,1:3] <- tidy_dag$data[mpd_row,1:3]
+  # tidy_dag$data[cor_row,5:7] <- tidy_dag$data[FDis_row,5:7]
+
+  l_pattern <- c("FDis MPD", "Async Spop")
+
+
+  for (i in seq_along(l_pattern)) {
+
+    cor_row <- paste(tidy_dag$data$name, tidy_dag$data$to) %>%
+      str_detect(pattern = l_pattern[i]) %>%
+      which()
+
+    word_to <- word(l_pattern[i], 1, sep = " ")
+    word_name <- word(l_pattern[i], 2, sep = " ")
+
+    word_name_row <- which(tidy_dag$data$name == word_name)[1]
+    word_to_row <- which(tidy_dag$data$to == word_to)[1]
+
+
+    tidy_dag$data[cor_row,1:3] <- tidy_dag$data[word_name_row,1:3]
+    tidy_dag$data[cor_row,5:7] <- tidy_dag$data[word_to_row,5:7]
+
+  }
 
   sem_coefs_tidy <- sem_coefs |>
     select(Response, Predictor, DF, P.Value, Std.Estimate) |>
@@ -211,7 +242,7 @@ plot_sem_2 <- function(
         str_replace_all( "~~|log\\(|[[:punct:]]", ""),
       significance = ifelse(P.Value <= 0.05, "grey30", "grey80"),
       dir_relation = as.integer(ifelse(Std.Estimate < 0, 2, 1)),
-      edge_width = ifelse(Std.Estimate < 0.15, 0.15, abs(Std.Estimate)),
+      edge_width = ifelse(abs(Std.Estimate) < 0.15, 0.15, abs(Std.Estimate)),
       coefs = ifelse(significance == "grey30", Std.Estimate, NA)
     )
 
@@ -232,7 +263,7 @@ plot_sem_2 <- function(
       y_r2 = yend + 0.025,
       r2_label = paste0(R.squared*100, "%")
     ) #|>
-    #filter(direction %in% c("->",NA))
+  #filter(direction %in% c("->",NA))
 
 
 
@@ -291,4 +322,3 @@ plot_sem_2 <- function(
     )
 
 }
-
