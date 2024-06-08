@@ -61,6 +61,30 @@ plot_sem <- function(
                           levels = model_parts)
     )
 
+  # reorder MPD <-> FDis and Async <-> Spop to be able to join tidy_dag and
+  # sem_coefs_tidy
+
+
+  l_pattern <- c("FDis MPD", "Async Spop")
+
+
+  for (i in seq_along(l_pattern)) {
+
+    cor_row <- paste(tidy_dag$data$name, tidy_dag$data$to) %>%
+      str_detect(pattern = l_pattern[i]) %>%
+      which()
+
+    word_to <- word(l_pattern[i], 1, sep = " ")
+    word_name <- word(l_pattern[i], 2, sep = " ")
+
+    word_name_row <- which(tidy_dag$data$name == word_name)[1]
+    word_to_row <- which(tidy_dag$data$to == word_to)[1]
+
+
+    tidy_dag$data[cor_row,1:3] <- tidy_dag$data[word_name_row,1:3]
+    tidy_dag$data[cor_row,5:7] <- tidy_dag$data[word_to_row,5:7]
+
+  }
 
 
   sem_coefs_tidy <- sem_coefs |>
@@ -76,18 +100,21 @@ plot_sem <- function(
       edge_width = ifelse(abs(Std.Estimate) < 0.15, 0.15, abs(Std.Estimate))
     )
 
-  tidy_dag$data <- left_join(tidy_dag$data, sem_coefs_tidy, by = c("name", "to")) |>
-    # mutate(
-    #   x_coefs = x+((xend - x)*0.20),
-    #   y_coefs = y+((yend - y)*0.20)
-    # ) |>
+  tidy_dag$data <-
+    left_join(tidy_dag$data, sem_coefs_tidy, by = c("name", "to")) |>
     left_join(r2_df, by = "to")|>
     mutate(
       x_r2 = xend + 0.025,
       y_r2 = yend + 0.025,
       r2_label = paste0(R.squared*100, "%")
-    ) |>
-    filter(direction %in% c("->",NA))
+    ) %>%
+    mutate(
+      significance = case_when(
+        significance == "grey30" ~ ifelse(direction == "<->", "#E49B0F", significance),
+        .default = significance
+      )
+    )
+
 
 
 
@@ -105,16 +132,6 @@ plot_sem <- function(
     geom_dag_text(col = "white",
                   size = 4.5,
                   fontface = "bold") +
-    # geom_label(
-    #   aes(x = x_r2, y = y_r2, label = r2_label),
-    #   show.legend = F,
-    #   color = "grey30",
-    #   fill = "grey90",
-    #   label.padding = unit(.25, "lines"),
-    #   label.r = unit(.2, "lines"),
-    #   size = 3,
-    #   fontface = "bold"
-    # ) +
     geom_text(aes(x = .55, y = -.03),
               label = t_label, fontface = "bold",
               size = 4.5) +
@@ -122,14 +139,13 @@ plot_sem <- function(
     ylim(-0.05, 0.5) +
     coord_fixed() +
     labs(
-      title = title #,
-      # subtitle = glue::glue(
-      #   "Fischer's C = {fc$Fisher.C}; df = {fc$df}; p-value = {fc$P.Value}")
-      ) +
+      title = title
+    ) +
     theme(legend.position = "none",
           plot.background = element_rect(fill = "white", color = NA),
           title = element_text(size = 18)
-          )
+    )
+
 
 }
 

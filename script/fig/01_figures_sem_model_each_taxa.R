@@ -285,7 +285,6 @@ gt_model(wgame_sem, "Mammals") # GDD
 SEM_dag_mammals <- update_dag(
   SEM_dag,
   "
-  Spop <-> Async
   SR -> Spop
   SR -> CWPoL
   ")
