@@ -11,6 +11,7 @@ fit_bbs_sem <- function(model_data){
     f_dis %~~% mpd,
     mpd %~~% cwm_pc1,
     f_dis %~~% cwm_pc1,
+    log_sqrt_async_l %~~% log_pop_stab,
     data = model_data
   )
 
@@ -24,6 +25,7 @@ fit_bbs_sem <- function(model_data){
     f_dis %~~% mpd,
     mpd %~~% cwm_pc1,
     f_dis %~~% cwm_pc1,
+    log_sqrt_async_l %~~% log_pop_stab,
     data = model_data
   )
 

@@ -5,6 +5,7 @@ library(tidyverse)
 library(piecewiseSEM)
 library(gt)
 library(patchwork)
+library(grid)
 
 source("function/gt_dsep.R")
 source("function/gt_model.R")
@@ -36,7 +37,7 @@ SEM_dag <- readRDS("output/sem_dag.rds")
 birds_sem <- readRDS("output/SEM_results/model_output/birds_sem.rds")
 
 # Model comparison
-gt_model(birds_sem, "Birds") # FDD
+gt_model(birds_sem, "Birds") # GDD
 
 
 # SEM plot
@@ -284,7 +285,6 @@ gt_model(wgame_sem, "Mammals") # GDD
 SEM_dag_mammals <- update_dag(
   SEM_dag,
   "
-  Spop <-> Async
   SR -> Spop
   SR -> CWPoL
   ")
@@ -416,3 +416,4 @@ ggsave(
   width = 15,
   height = 25
 )
+

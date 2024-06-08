@@ -1061,7 +1061,7 @@
     },
     "ggdag": {
       "Package": "ggdag",
-      "Version": "0.2.10",
+      "Version": "0.2.12",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1081,7 +1081,7 @@
         "tibble",
         "tidygraph"
       ],
-      "Hash": "07e9bed17027af3a3dfe3a1faecce837"
+      "Hash": "813c29e1d0737f3fda24876fd2dd8d72"
     },
     "ggforce": {
       "Package": "ggforce",
@@ -1132,7 +1132,7 @@
     },
     "ggplot2": {
       "Package": "ggplot2",
-      "Version": "3.4.4",
+      "Version": "3.5.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1153,7 +1153,7 @@
         "vctrs",
         "withr"
       ],
-      "Hash": "313d31eff2274ecf4c1d3581db7241f9"
+      "Hash": "44c6a2f8202d5b7e878ea274b1092426"
     },
     "ggraph": {
       "Package": "ggraph",
