@@ -5,6 +5,7 @@ library(piecewiseSEM)
 library(tidyverse)
 library(spdep)
 library(sf)
+library(ncf)
 
 
 # get files ---------------------------------------------------------------
@@ -26,12 +27,14 @@ dataset_names <- SEM_files %>%
 
 ## results dataframe ----
 
-morans_df <- data.frame(
+morans_df <- tibble(
   dataset = character(),
   sem_model = character(),
   variable = character(),
   morans_I = numeric(),
-  p_value = numeric()
+  p_value = numeric(),
+  spat_autocor = logical(),
+  correlogram = list()
 )
 
 # 1. dataset level ----
@@ -75,7 +78,7 @@ for (i in seq_along(dataset_names)){
     # join coords and residuals
     data_model_sf <- left_join(data_sf, model_residuals, by = "SiteID")
 
-    variables <- grep("residuals", names(bird_ac_sf), value = T)
+    variables <- grep("residuals", names(data_model_sf), value = T)
 
     # 3. Variable level ----
     for (var in variables){
@@ -86,18 +89,20 @@ for (i in seq_along(dataset_names)){
       mor.mc <- moran.mc(x = var_residual, listw = wts,
                          nsim = 999, zero.policy = T)
 
-      new_row <- data.frame(
-        variable = var,
-        morans_I = mor.mc$statistic,
-        p_value = mor.mc$p.value
-      )
+      sf_coords <- st_coordinates(data_model_sf) %>%  as.data.frame()
 
-      new_row <- data.frame(
+      correlog.ncf <- ncf::correlog(
+        x = sf_coords$X, y = sf_coords$Y, z = var_residual,
+        increment = ng_dist, resamp = 999)
+
+      new_row <- tibble(
         dataset = dataset_name,
         sem_model = model_name,
         variable = var,
         morans_I = mor.mc$statistic,
-        p_value = mor.mc$p.value
+        p_value = mor.mc$p.value,
+        spat_autocor = ifelse(mor.mc$p.value <= 0.05, T, F),
+        correlogram = list(correlog.ncf)
       )
 
       morans_df <- morans_df %>% add_row(new_row)
@@ -110,8 +115,6 @@ for (i in seq_along(dataset_names)){
 # Save Moran's I results --------------------------------------------------
 
 
-morans_df %>%
-  # add new columm
-  mutate(spat_autocor = ifelse(p_value <= 0.05, T, F)) %>%
-  #save in csv
-  write.csv("output/SEM_results/spatial_autocorrelation/morans_i_residuals.csv")
+#save in csv
+saveRDS(morans_df,
+        "output/SEM_results/spatial_autocorrelation/morans_i_residuals.rds")
