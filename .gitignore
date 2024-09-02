@@ -50,3 +50,5 @@ rsconnect/
 
 # Cleaning script
 script/00_clean_comm_data.R
+
+data/cleaned/coords/
