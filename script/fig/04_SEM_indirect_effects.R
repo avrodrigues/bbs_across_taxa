@@ -148,8 +148,8 @@ wgame_gdd_coefs <- summary(wgame_gdd)$coefficients
 wgame_fdd_coefs <- summary(wgame_fdd)$coefficients
 
 model_data <- wgame_gdd$data
-wgame_gdd_eff <- semEff(wgame_gdd, R=1000)
-wgame_fdd_eff <- semEff(wgame_fdd, R=1000)
+wgame_gdd_eff <- semEff(wgame_gdd, R=10000)
+wgame_fdd_eff <- semEff(wgame_fdd, R=10000)
 
 wgame_indir_gdd <- getAllInd(wgame_gdd_eff)
 wgame_indir_gdd <- as.data.frame(wgame_indir_gdd$log.stability)
