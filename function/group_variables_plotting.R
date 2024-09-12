@@ -9,11 +9,11 @@ group_variables_for_plotting <- function(df){
   for(i in first_vars){
     print(i)
     if(i == "avg_richness"){
-      df[df$first_var==i,"var_group"] <- "Avg_richness"
+      df[df$first_var==i,"var_group"] <- "Richness"
     } else if(i == "f_dis" | i == "mpd" | i=="cwm_pc1"){
       df[df$first_var==i,"var_group"] <- "Fun_traits"
     } else if(i=="avg_GDD5" | i =="sd_GDD5"){
-      df[df$first_var==i,"var_group"] <- "Temp_vars"
+      df[df$first_var==i,"var_group"] <- "Environment"
     }
   }
   return(df)
