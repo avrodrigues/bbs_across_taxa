@@ -11,6 +11,7 @@ plot_indirect_effects <- function(df, variable_colors, title){
     geom_bar(stat="identity") +
     coord_flip() +
     scale_fill_manual(values=variable_colors) +
+    scale_y_continuous(limits=c(-0.85,0.68)) +
     theme_minimal() +
     theme(legend.position="none")+
     xlab("") +
