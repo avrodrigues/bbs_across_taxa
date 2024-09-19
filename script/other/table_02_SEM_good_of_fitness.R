@@ -29,7 +29,7 @@ calc_gof_metrics <- function(sem_list, taxon){
   sem_aic <- map(sem_list, AIC_psem) |> list_rbind() |>
     select(AICc) |>
     mutate(
-      ΔAICc = AICc-min(AICc)
+      delta_AICc = AICc-min(AICc)
     )
 
   mod_df <- cbind(sem_fc, sem_ll_chisq, sem_aic) |>
@@ -37,7 +37,7 @@ calc_gof_metrics <- function(sem_list, taxon){
       .before = 1,
       Taxa = taxon,
       Model = names(sem_list) |> word(2, sep = "_") |> toupper() |> str_sub(1, 3)) |>
-    arrange(ΔAICc)
+    arrange(delta_AICc)
 
   mod_df
 }

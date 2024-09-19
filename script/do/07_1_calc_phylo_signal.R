@@ -15,10 +15,10 @@ birds_tree <- read.tree("data/cleaned/Birds/birds_phy_n100.tre")
 ### prepare trait data ----
 
 # select traits to analysis
-birds_traits_selected <- birds_traits |>
+birds_traits_selected <- birds_traits %>%
   mutate(log_mass = log(Mass),
          log_gen_length = log(Gen_Length),
-         log_max_brood = log(Max_Brood)) |>
+         log_max_brood = log(Max_Brood))  %>%
   # fast_slow strategy
   dplyr::select(Species, Mig, log_gen_length, log_mass, log_max_brood, Feeding)
 
@@ -33,7 +33,7 @@ workers <- (availableCores()*.8) %>% round()
 plan(multisession, workers = workers)
 
 # 100 trees in birds
-future_walk(seq_along(birds_tree), \(i){
+future_walk(seq_along(birds_tree), function(i){
   file_name <- glue::glue(
     "output/phylo_signal/bird_trees/birds_p_signal_{sprintf('%03d', i)}.csv"
     )
@@ -41,8 +41,8 @@ future_walk(seq_along(birds_tree), \(i){
   # calculate phylogenetic signal
   # parallelization is used to compute p-value based on bootstrap
   ps_parallel <- calc_phylo_signal(
-    birds_tree[[i]],
-    trait_df,
+    tree = birds_tree[[i]],
+    trait_df = trait_df,
     n_rep = 1000,
     file = file_name,
     parallel = T,
@@ -57,7 +57,7 @@ plan(sequential)
 
 ### load data ----
 butterflies_traits <-
-  read.csv("data/cleaned/TraitsPhylogeny/Butterfly_traits_final.csv") |>
+  read.csv("data/cleaned/TraitsPhylogeny/Butterfly_traits_final.csv") %>%
   mutate(Species = str_replace_all(Species, "_", " "))
 butterflies_tree <- read.tree("data/cleaned/TraitsPhylogeny/Butterfly_tree_final.tre")
 
@@ -66,8 +66,8 @@ butterflies_tree <- read.tree("data/cleaned/TraitsPhylogeny/Butterfly_tree_final
 
 # select traits to analysis
 butterflies_traits_selected <-
-  butterflies_traits |>
-  mutate(log_wingspan = log(wingspan)) |>
+  butterflies_traits %>%
+  mutate(log_wingspan = log(wingspan)) %>%
   # fast_slow strategy
   dplyr::select(Species, wintering,  voltinism,  host_usage, log_wingspan)
 
@@ -102,7 +102,7 @@ phyto_tree <- read.tree("data/cleaned/Phytoplankton/Phytoplankton_tree_Weigel202
 #
 # # select traits to analysis
 # phyto_traits_selected <-
-#   phyto_traits |>
+#   phyto_traits %>%
 #   # fast_slow strategy
 #   dplyr::select(Species, nfix, motility, chain, cell_vol)
 #
@@ -128,7 +128,7 @@ phyto_tree <- read.tree("data/cleaned/Phytoplankton/Phytoplankton_tree_Weigel202
 
 # moth_outliers <- readRDS("data/cleaned/Moths/moths_sp_trait_outliers.rds")
 # moths_traits <-
-#   read.csv("data/cleaned/TraitsPhylogeny/Moth_traits_final.csv") |>
+#   read.csv("data/cleaned/TraitsPhylogeny/Moth_traits_final.csv") %>%
 #   filter(!Species %in% moth_outliers)
 # moths_tree <- read.tree("data/cleaned/TraitsPhylogeny/Moth_tree_final.tre")
 #
@@ -137,10 +137,10 @@ phyto_tree <- read.tree("data/cleaned/Phytoplankton/Phytoplankton_tree_Weigel202
 #
 # # select traits to analysis
 # moths_traits_selected <-
-#   moths_traits |>
+#   moths_traits %>%
 #   mutate(
 #     log_wingspan = log(wingspan + 1),
-#   ) |>
+#   ) %>%
 #   # fast_slow strategy
 #   dplyr::select(Abbrev_in_phylo, wintering,  voltinism,  host_usage, log_wingspan)
 #
@@ -173,18 +173,18 @@ rodents_tree <- read.tree("data/cleaned/TraitsPhylogeny/SmallRodents_100trees_fi
 
 # select traits to analysis
 rodents_traits_selected <-
-  rodents_traits |>
+  rodents_traits %>%
   mutate(
     log_body_mass = log(adult_mass_g),
     log_gen_length = log(generation_length_d),
     log_dispersal = log(dispersal_km)
-  ) |>
+  ) %>%
   # fast_slow strategy
   dplyr::select(phylacine_binomial , log_gen_length,
                 litter_size_n, det_diet_breadth_n,
                 log_body_mass, log_dispersal)
 
-rodents_traits_selected <- rodents_traits_selected |>
+rodents_traits_selected <- rodents_traits_selected %>%
   rename("Species" = "phylacine_binomial")
 
 trait_df <- rodents_traits_selected[,-1]
@@ -231,18 +231,18 @@ wintergame_tree <- read.tree("data/cleaned/TraitsPhylogeny/WinterGame_100trees_f
 
 # select traits to analysis
 wintergame_traits_selected <-
-  wintergame_traits |>
+  wintergame_traits %>%
   mutate(
     log_body_mass = log(adult_mass_g),
     log_dispersal = log(dispersal_km)
-  ) |>
+  ) %>%
   # fast_slow strategy
   dplyr::select(phylacine_binomial , generation_length_d,
                 litter_size_n, det_diet_breadth_n,
                 log_body_mass, log_dispersal)
 
 
-wintergame_traits_selected <- wintergame_traits_selected |>
+wintergame_traits_selected <- wintergame_traits_selected %>%
   rename("Species" = "phylacine_binomial")
 
 

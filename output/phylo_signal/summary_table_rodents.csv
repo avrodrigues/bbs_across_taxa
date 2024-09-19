@@ -1,0 +1,6 @@
+"","trait_name","avg_stat_value","sd_stat_value","stat_name","signal"
+"1","det_diet_breadth_n",1.0295106177684,0.0147423703936687,"Pagel's lambda",100
+"2","litter_size_n",0.185343856712305,0.237204171097788,"Pagel's lambda",0
+"3","log_body_mass",0.85905141821544,0.195976493966225,"Pagel's lambda",50
+"4","log_dispersal",0.946214164801764,0.19793238993766,"Pagel's lambda",78
+"5","log_gen_length",0.694939311478579,0.0949276331344678,"Pagel's lambda",4
