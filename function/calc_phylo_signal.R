@@ -38,6 +38,10 @@ calc_phylo_signal <- function(
   match_data <- match.phylo.data(tree, trait_df)
 
   phy <- match_data$phy
+
+  # this step is only to avoid a bug in ape::ace()
+  if(!is.null(phy$node.label))  phy$node.label <- NULL
+
   trait_data <- match_data$data %>%
     mutate(
       across(
