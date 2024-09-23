@@ -1,18 +1,18 @@
 #!/bin/bash -l
-#SBATCH --job-name=R_phylo_signal
+#SBATCH --job-name=test_phylo_signal
 #SBATCH --account=project_2007729
 #SBATCH --output=output_%j.txt
 #SBATCH --error=errors_%j.txt
-#SBATCH --partition=longrun
-#SBATCH --time=8-00:00:00
+#SBATCH --partition=small
+#SBATCH --time=1-00:00:00
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=8G
+#SBATCH --cpus-per-task=10
+#SBATCH --mem=4G
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-type=END
-#SBATCH --array=1-100
+#SBATCH --array=1
 
-seff $SLURM_JOBID R_BFmod_array
+seff $SLURM_JOBID test_phylo_signal
 
 # Load R 4.2.2 ( use r-env-singularity for the lastest version)
 module load r-env/422
