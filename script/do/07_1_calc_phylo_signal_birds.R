@@ -54,7 +54,7 @@ file_name <- glue::glue(
 ps_parallel <- calc_phylo_signal(
     tree = tree,
     trait_df = trait_df,
-    n_rep = 1000,
+    n_rep = 100,
     file = file_name,
     parallel = T,
     progress = FALSE
