@@ -1,3 +1,38 @@
+
+# Check the renv set ------------------------------------------------------
+
+need_pkg <- c("dplyr",
+              "furrr",
+              "future",
+              "glue",
+              "tidyverse",
+              "dplyr",
+              "furrr",
+              "phytools",
+              "picante",
+              "progressr",
+              "ape",
+              "expm")
+
+
+
+inst_pkg <- installed.packages()[,"Package"]
+
+to_inst <- !need_pkg %in% inst_pkg
+
+if(any(to_inst)){
+  renv::restore(packages = need_pkg)
+}
+
+inst_pkg <- installed.packages()[,"Package"]
+
+to_inst <- !need_pkg %in% inst_pkg
+
+if(any(to_inst)){
+  install.packages(need_pkg[to_inst])
+}
+
+
 # load packages -----------------------------------------------------------
 
 library(tidyverse)
