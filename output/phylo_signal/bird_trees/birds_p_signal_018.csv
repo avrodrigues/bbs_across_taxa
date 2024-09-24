@@ -1,0 +1,6 @@
+"trait_name","trait_type","stat_name","stat_value","p_value","signal"
+"Mig","Categorical","Delta",1.08267389649807,0.26,FALSE
+"log_gen_length","Continuous","Pagel's lambda",7.37794380523522e-05,1,FALSE
+"log_mass","Continuous","Pagel's lambda",0.70551500322517,0.0347614620833903,TRUE
+"log_max_brood","Continuous","Pagel's lambda",0.444677699183282,0.0231102142871735,TRUE
+"Feeding","Categorical","Delta",1.80638628572341,0.63,FALSE
