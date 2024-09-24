@@ -257,7 +257,7 @@ plan(multisession, workers = workers)
 
 # 100 trees in rodents
 
-future_walk(seq_along(wintergame_tree)[1:5], \(i){
+future_walk(seq_along(wintergame_tree), \(i){
   file_name <- glue::glue(
     "output/phylo_signal/wgame_trees/wgame_p_signal_{sprintf('%03d', i)}.csv"
   )
