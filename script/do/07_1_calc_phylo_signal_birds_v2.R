@@ -203,8 +203,13 @@ match_data <- match.phylo.data(tree, trait_df)
 
 phy <- match_data$phy
 
+# this step is only to avoid a bug in ape::ace()
+if(!is.null(phy$node.label))  phy$node.label <- NULL
 
+(t0 <- Sys.time())
 phy_sig_df <- future_map_dfr(trait_names, compute_phylo_signal)
 
 write.csv(phy_sig_df, file, row.names = FALSE)
-plan(sequential)
+t1 <- Sys.time()
+
+t1 - t0
