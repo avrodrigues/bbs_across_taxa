@@ -121,13 +121,13 @@ calc_phylo_signal <- function(
   if (parallel) {
 
     if(is.null(workers)){
-      nworkers <- (availableCores() * .75) %>% round()
+      nworkers <- (availableCores())
     } else {
       nworkers <- workers
     }
 
     # Use multisession for parallel processing
-    plan(multisession, workers = nworkers)
+    plan(multicore, workers = nworkers)
   } else {
     # Fallback to sequential processing
     plan(sequential)

@@ -36,5 +36,5 @@ echo "TMPDIR==/scratch/project_2007729/avrodrigues/R/bbs_across_taxa" >> ~/.Renv
 echo "My SLURM_ARRAY_TASK_ID:" $SLURM_ARRAY_TASK_ID
 
 # Run the R script
-srun apptainer_wrapper exec Rscript --no-save ~/script/do/ $SLURM_ARRAY_TASK_ID
+srun apptainer_wrapper exec Rscript --no-save script/do/07_1_calc_phylo_signal_birds.R  $SLURM_ARRAY_TASK_ID
 

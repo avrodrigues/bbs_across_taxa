@@ -64,7 +64,7 @@ rownames(trait_df) <- birds_traits_selected[,1] %>% str_replace_all(" ", "_")
 ### paralellel computation for multiple trees ----
 # setting plan for future_walk function
 # workers <- (availableCores()) %>% round()
-# plan(multisession, workers = workers)
+plan(multicore, workers = availableCores())
 
 
 phylo = 1:100
@@ -84,15 +84,18 @@ file_name <- glue::glue(
     "output/phylo_signal/bird_trees/birds_p_signal_{sprintf('%03d', phylo_job)}.csv"
   )
 
+t0 <-Sys.time()
   # calculate phylogenetic signal
   # parallelization is used to compute p-value based on bootstrap
 ps_parallel <- calc_phylo_signal(
     tree = tree,
     trait_df = trait_df,
-    n_rep = 100,
+    n_rep = 10,
     file = file_name,
     parallel = T,
     progress = FALSE
   )
 
+t1 <- Sys.time()
 
+cat("Total time taken: ", t1 - t0, "\n")
