@@ -3,12 +3,12 @@ library(tidyverse)
 
 list_tree_dirs <- list.dirs("output/phylo_signal")
 
-sm_lg_mammals_dir <- grep(pattern = "rod|game", list_tree_dirs, value = T)
+dirs <- grep(pattern = "bird|rod|game", list_tree_dirs, value = T)
 
-names(sm_lg_mammals_dir) <- word(sm_lg_mammals_dir, 3, sep = "/") %>%
+names(dirs) <- word(dirs, 3, sep = "/") %>%
   word(1, sep = "_")
 
-list_df <- purrr::map(sm_lg_mammals_dir, function(x){
+list_df <- purrr::map(dirs, function(x){
 
   files_path <- list.files(x, full.names = T)
 
@@ -17,16 +17,17 @@ list_df <- purrr::map(sm_lg_mammals_dir, function(x){
 })
 
 
+
 results_df <- purrr::map(
   list_df, function(x){
     x %>%
       group_by(trait_name) %>%
-      summarise(
+      reframe(
         stat_name = unique(stat_name),
         avg_stat_value = mean(stat_value),
         sd_stat_value = sd(stat_value),
-        signal = sum(signal)
-      )
+        signal_perc = (sum(signal)/n()) * 100
+        )
 
 
   }
@@ -43,3 +44,5 @@ walk(1:length(results_df), function(i){
 
   write.csv(res_save, file_name, row.names = F)
 })
+
+
