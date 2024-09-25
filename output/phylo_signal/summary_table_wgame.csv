@@ -1,4 +1,4 @@
-"trait_name","stat_name","avg_stat_value","sd_stat_value","signal"
+"trait_name","stat_name","avg_stat_value","sd_stat_value","signal_perc"
 "det_diet_breadth_n","Pagel's lambda",0.000976837227592102,0.00535296517360622,0
 "generation_length_d","Pagel's lambda",0.943310434386585,0.0323210114898779,80
 "litter_size_n","Pagel's lambda",0.507665562491031,0.0238700692778388,0
