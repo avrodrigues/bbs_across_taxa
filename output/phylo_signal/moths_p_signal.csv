@@ -1,0 +1,5 @@
+"trait_name","trait_type","stat_name","stat_value","p_value","signal"
+"wintering","Categorical","Delta",19.0786157479687,0.9,FALSE
+"voltinism","Categorical","Delta",3.64874044988201,0.7,FALSE
+"host_usage","Categorical","Delta",4.65189196777202,0.7,FALSE
+"log_wingspan","Continuous","Pagel's lambda",1.06257235228395,9.31920963142558e-134,TRUE

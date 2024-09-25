@@ -1,0 +1,6 @@
+"trait_name","trait_type","stat_name","stat_value","p_value","signal"
+"generation_length_d","Continuous","Pagel's lambda",0.950028005359236,0.0320288193886819,TRUE
+"litter_size_n","Continuous","Pagel's lambda",0.5366653215652,0.113454390108726,FALSE
+"det_diet_breadth_n","Continuous","Pagel's lambda",0.0258596692925481,1,FALSE
+"log_body_mass","Continuous","Pagel's lambda",0.832534739581819,0.00557792353948396,TRUE
+"log_dispersal","Continuous","Pagel's lambda",0.592148387739635,0.113723514605246,FALSE

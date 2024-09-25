@@ -1,6 +1,6 @@
-"","trait_name","avg_stat_value","sd_stat_value","stat_name","signal"
-"1","det_diet_breadth_n",1.0295106177684,0.0147423703936687,"Pagel's lambda",100
-"2","litter_size_n",0.185343856712305,0.237204171097788,"Pagel's lambda",0
-"3","log_body_mass",0.85905141821544,0.195976493966225,"Pagel's lambda",50
-"4","log_dispersal",0.946214164801764,0.19793238993766,"Pagel's lambda",78
-"5","log_gen_length",0.694939311478579,0.0949276331344678,"Pagel's lambda",4
+"trait_name","stat_name","avg_stat_value","sd_stat_value","signal"
+"det_diet_breadth_n","Pagel's lambda",0.000976837227592102,0.00535296517360622,0
+"generation_length_d","Pagel's lambda",0.943310434386585,0.0323210114898779,80
+"litter_size_n","Pagel's lambda",0.507665562491031,0.0238700692778388,0
+"log_body_mass","Pagel's lambda",0.841825715853652,0.0207485478544578,100
+"log_dispersal","Pagel's lambda",0.568505931171902,0.0237769998053713,0

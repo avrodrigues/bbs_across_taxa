@@ -1,0 +1,5 @@
+"","trait_name","trait_type","stat_name","coef_value","p_value"
+"1","nfix","Binary","glm_slope",0.0568642528589569,0
+"2","motility","Binary","glm_slope",0.0611938175811893,0
+"3","chain","Binary","glm_slope",0.0653918557751806,0
+"4","cell_vol","Continuous","glm_slope",-0.117587488021343,1
