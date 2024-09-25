@@ -159,7 +159,7 @@ compute_phylo_signal <- function(name) {
     deltaA <- delta(trait, phy, 0.1, 0.0589, 10000, 10, 100)
 
     # P-value by randomization
-    random_delta <- future_map_dbl(1:10, ~ {
+    random_delta <- future_map_dbl(1:n_rep, ~ {
       rtrait <- sample(trait)
       delta(rtrait, phy, 0.1, 0.0589, 10000, 10, 100)
     }, .options = furrr_options(seed = TRUE))
@@ -206,10 +206,11 @@ phy <- match_data$phy
 # this step is only to avoid a bug in ape::ace()
 if(!is.null(phy$node.label))  phy$node.label <- NULL
 
+n_rep <- 100
 (t0 <- Sys.time())
 phy_sig_df <- future_map_dfr(trait_names, compute_phylo_signal)
 
-write.csv(phy_sig_df, file, row.names = FALSE)
+write.csv(phy_sig_df, file_name, row.names = FALSE)
 t1 <- Sys.time()
 
 t1 - t0

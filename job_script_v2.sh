@@ -1,18 +1,18 @@
 #!/bin/bash -l
-#SBATCH --job-name=test_phylo_signal
+#SBATCH --job-name=phylo_signal
 #SBATCH --account=project_2007729
 #SBATCH --output=output_%j.txt
 #SBATCH --error=errors_%j.txt
-#SBATCH --partition=test
-#SBATCH --time=00:15:00
+#SBATCH --partition=small
+#SBATCH --time=2:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=10
-#SBATCH --mem=16G
+#SBATCH --mem=64G
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-type=END
-#SBATCH --array=2
+#SBATCH --array=6,33,47,52,57,60,61,82,92,99
 
-seff $SLURM_JOBID test_phylo_signal
+seff $SLURM_JOBID phylo_signal
 
 # Load R 4.2.2 ( use r-env-singularity for the lastest version)
 module load r-env/422
@@ -28,5 +28,5 @@ echo "TMPDIR==/scratch/project_2007729/avrodrigues/R/bbs_across_taxa" >> ~/.Renv
 echo "My SLURM_ARRAY_TASK_ID:" $SLURM_ARRAY_TASK_ID
 
 # Run the R script
-srun apptainer_wrapper exec Rscript --no-save script/do/07_1_calc_phylo_signal_birds.R  $SLURM_ARRAY_TASK_ID
+srun apptainer_wrapper exec Rscript --no-save script/do/07_1_calc_phylo_signal_birds_v2.R  $SLURM_ARRAY_TASK_ID
 
