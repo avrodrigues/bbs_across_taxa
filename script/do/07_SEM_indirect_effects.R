@@ -1,16 +1,11 @@
 # Calculate indirect effects in SEMs
 
-#install_version("piecewiseSEM", version="2.3.0")
-#install.packages("semEff")
-
 library(remotes)
 library(tidyverse)
 library(piecewiseSEM)
 library(semEff)
 
 source("function/indirect_effects.R")
-
-setwd("C:/LocalData/tuulriss/OneDrive - University of Helsinki/REC/BBS/bbs_across_taxa")
 
 # Birds ----
 

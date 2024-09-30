@@ -4,8 +4,6 @@ library(tidyverse)
 library(ggplot2)
 library(egg)
 
-setwd("C:/LocalData/tuulriss/OneDrive - University of Helsinki/REC/BBS/bbs_across_taxa")
-
 source("./function/group_variables_plotting.R")
 source("./function/plot_indirect_effects.R")
 

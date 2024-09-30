@@ -2,8 +2,6 @@
 
 library(tidyverse)
 
-setwd("C:/LocalData/tuulriss/OneDrive - University of Helsinki/REC/BBS/bbs_across_taxa")
-
 source("./function/group_variables_plotting.R")
 
 # Read in best fit models ----
