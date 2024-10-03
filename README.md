@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![DOI](https://zenodo.org/badge/744036049.svg)](https://zenodo.org/doi/10.5281/zenodo.10526501)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13885254.svg)](https://doi.org/10.5281/zenodo.13885254)
 <!-- badges: end -->
 
 Here you find the code and data necessary to reproduce the analysis in
