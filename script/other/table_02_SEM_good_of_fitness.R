@@ -14,30 +14,30 @@ calc_gof_metrics <- function(sem_list, taxon){
   require(tidyverse)
 
 
-  sem_fc <- map(sem_list, fisherC) |> list_rbind() |>
+  sem_fc <- map(sem_list, fisherC) %>% list_rbind() %>%
     mutate(
       `Fisher's C (df, P)` = glue::glue("{Fisher.C} ({df}, {P.Value})")
-    ) |>
+    ) %>%
     select(4)
 
-  sem_ll_chisq <- map(sem_list, LLchisq) |> list_rbind() |>
+  sem_ll_chisq <- map(sem_list, LLchisq) %>% list_rbind() %>%
     mutate(
       `χ2 (df, P)` = glue::glue("{Chisq} ({df}, {P.Value})")
-    ) |>
+    ) %>%
     select(4)
 
-  sem_aic <- map(sem_list, AIC_psem) |> list_rbind() |>
-    select(AICc) |>
+  sem_aic <- map(sem_list, AIC_psem) %>% list_rbind() %>%
+    select(AICc) %>%
     mutate(
-      ΔAICc = AICc-min(AICc)
+      delta_AICc = AICc-min(AICc)
     )
 
-  mod_df <- cbind(sem_fc, sem_ll_chisq, sem_aic) |>
+  mod_df <- cbind(sem_fc, sem_ll_chisq, sem_aic) %>%
      mutate(
       .before = 1,
       Taxa = taxon,
-      Model = names(sem_list) |> word(2, sep = "_") |> toupper() |> str_sub(1, 3)) |>
-    arrange(ΔAICc)
+      Model = names(sem_list) %>% word(2, sep = "_") %>% toupper() %>% str_sub(1, 3)) %>%
+    arrange(delta_AICc)
 
   mod_df
 }
@@ -45,10 +45,10 @@ calc_gof_metrics <- function(sem_list, taxon){
 
 gof_df <- map(1:6, function(i){
   calc_gof_metrics(model_results[[i]], names(model_results)[i])
-}) |> list_rbind()
+}) %>% list_rbind()
 
-gof_df |>
-  gt(rowname_col = "row", groupname_col = "Taxa") |>
-  sub_missing()  |>
+gof_df %>%
+  gt(rowname_col = "row", groupname_col = "Taxa") %>%
+  sub_missing()  %>%
   gtsave("output/SEM_results/table_2.docx")
 
