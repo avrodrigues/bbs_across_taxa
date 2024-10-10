@@ -48,7 +48,7 @@ concluded.
 
 In `data` you find all the data necessary to run the analysis and
 compute the diversity and stability metrics.  
-In `function` you find the functions created optimize the analyses
+In `function` you find the functions created optmize the analysis
 workflow.  
-In `script` you find the code for the analyses and figures.  
+In `script` you find the code for the analysis and figures.  
 In `output` you find the output from models, figures and table.

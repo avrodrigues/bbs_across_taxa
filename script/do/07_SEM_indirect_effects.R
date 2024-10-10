@@ -1,6 +1,5 @@
 # Calculate indirect effects in SEMs
 
-library(remotes)
 library(tidyverse)
 library(piecewiseSEM)
 library(semEff)
@@ -48,14 +47,14 @@ buts_fdd_eff <- semEff(buts_fdd, R=1000)
 
 buts_indir_gdd <- getAllInd(buts_gdd_eff)
 buts_indir_gdd <- as.data.frame(buts_indir_gdd$log.stability)
+
+buts_indir_fdd <- getAllInd(buts_fdd_eff)
 buts_indir_fdd <- as.data.frame(buts_indir_fdd$log.stability)
 
 buts_indir_eff_gdd <- indir_effects(buts_indir_gdd, buts_gdd_coefs)
 buts_indir_eff_fdd <- indir_effects(buts_indir_fdd, buts_fdd_coefs)
 
-saveRDS(buts_indir_eff_gdd, "./output/SEM_results/indir_ef
-
-buts_indir_fdd <- getAllInd(buts_fdd_eff)fects/butterflies_indir_gdd.rds")
+saveRDS(buts_indir_eff_gdd, "./output/SEM_results/indir_effects/butterflies_indir_gdd.rds")
 saveRDS(buts_indir_eff_fdd, "./output/SEM_results/indir_effects/butterflies_indir_fdd.rds")
 
 # Moths ----

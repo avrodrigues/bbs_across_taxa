@@ -16,8 +16,7 @@ birds_tree <- read.tree("data/cleaned/Birds/birds_phy_n100.tre")
 
 ## Calculate MPD -------
 
-birds_mpd <- calc_mpd(birds_comm, birds_tree,
-                      abundance.var = "Abund_Stnd")
+birds_mpd <- calc_mpd(birds_comm, birds_tree)
 
 # save MPD Average
 write.csv(birds_mpd, "data/cleaned/Birds/birds_mpd_df.csv", row.names = F)
@@ -45,8 +44,7 @@ phyto_tree <- read.tree("data/cleaned/Phytoplankton/Phytoplankton_tree_Weigel202
 
 ## Calculate MPD -------
 
-phyto_mpd <- calc_mpd(phyto_comm, phyto_tree,
-                      abundance.var = "Abund_Stnd")
+phyto_mpd <- calc_mpd(phyto_comm, phyto_tree)
 
 # save MPD Average
 write.csv(phyto_mpd, "data/cleaned/Phytoplankton/phytoplankton_mpd_df.csv",
@@ -77,6 +75,7 @@ rodents_comm <- read.csv("data/cleaned/Rodents/rodents_comm.csv") |>
 rodents_tree <- read.tree("data/cleaned/TraitsPhylogeny/SmallRodents_100trees_final.tre")
 
 ## Calculate MPD -------
+ # lots of site with NA values, need to figure out what happened
 rodents_mpd <- calc_mpd(rodents_comm, rodents_tree,
                         abundance.var = "Abund_Stnd")
 
