@@ -1,5 +1,6 @@
 # load packages ----
 library(tidyverse)
+library(gt)
 
 
 model_files <- list.files(pattern = "_sem.rds", recursive = T)
