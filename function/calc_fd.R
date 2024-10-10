@@ -1,4 +1,4 @@
-
+# Calculate Functional Dispersion and community weighted mean
 
 calc_fd <- function(
     comm_data,

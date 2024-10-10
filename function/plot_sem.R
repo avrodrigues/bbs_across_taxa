@@ -1,4 +1,7 @@
+# Plot the Structural Equation Models using the Direct Aciclic Graph.
 
+# plot_sem: plot the simplified results, used in the main text
+# plor_sem_2: plot the detailed results, used in the supplementary material
 
 
 plot_sem <- function(

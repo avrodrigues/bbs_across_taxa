@@ -1,3 +1,6 @@
+# plot a gt table with the results of the d-separation test
+
+
 gt_dsep <- function(dsep, taxon){
   require(gt)
   require(janitor)

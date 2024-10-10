@@ -1,3 +1,5 @@
+# Update the DAG when new paths are added to the original DAG model
+
 
 update_dag <- function(dag, new_path) {
   require(stringi)

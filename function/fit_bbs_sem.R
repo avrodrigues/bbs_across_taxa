@@ -1,3 +1,6 @@
+# Fit the Structural Equation Model
+
+
 fit_bbs_sem <- function(model_data){
   require(piecewiseSEM)
 

@@ -1,3 +1,5 @@
+# calculate and plot PCA on trait values
+
 calc_pca_traits <- function(traits_std){
 
   t_to_pca <- traits_std[,-1]

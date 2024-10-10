@@ -1,3 +1,5 @@
+# plot a gt table with the goodness of fit statistics
+
 gt_model <- function(sem_list, taxon){
   require(gt)
   require(janitor)

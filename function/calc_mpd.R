@@ -1,3 +1,5 @@
+# Calculate mean pairwise phylogenetic distance
+
 
 calc_mpd <- function(
     comm_data,
