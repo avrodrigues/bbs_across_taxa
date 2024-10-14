@@ -334,7 +334,7 @@ ggsave(
 ## best models ----
 
 
-fig_3_results <-
+fig_4_results <-
   ((birds_plot_gdd5 + add_icon(icon_img$birds)) +
      (bf_plot_fdd+ add_icon(icon_img$butterflies)))/
   ((moths_plot_gdd5 + add_icon(icon_img$moths)) +
@@ -345,8 +345,14 @@ fig_3_results <-
 
 ggsave(
   "output/figs/SEM_plot/00_fig_sem_all_taxa.png",
-  fig_3_results,
-  width = 15,
+  fig_4_results,
+  width = 14.25,
   height = 12.5
 )
 
+ggsave(
+  "output/figs/SEM_plot/00_fig_sem_all_taxa.pdf",
+  fig_4_results,
+  width = 14.25,
+  height = 12.5
+)
