@@ -5,13 +5,15 @@
 
 <!-- badges: start -->
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13885254.svg)](https://doi.org/10.5281/zenodo.13885254)
+[![DOI](https://zenodo.org/badge/744036049.svg)](https://zenodo.org/doi/10.5281/zenodo.10526501)
 <!-- badges: end -->
 
 Here you find the code and data necessary to reproduce the analysis in
-the manuscript: **Cross-taxa analysis of long-term data reveals a
-positive biodiversity-stability relationship with taxon-specific
-mechanistic underpinning**
+the manuscript:
+
+**Rodrigues and Rissanen et al.** *Cross-taxa analysis of long-term data
+reveals a positive biodiversity-stability relationship with
+taxon-specific mechanistic underpinning*.
 
 ## How to use the repository
 
@@ -48,7 +50,7 @@ concluded.
 
 In `data` you find all the data necessary to run the analysis and
 compute the diversity and stability metrics.  
-In `function` you find the functions created optmize the analysis
+In `function` you find the functions created optimize the analysis
 workflow.  
 In `script` you find the code for the analysis and figures.  
 In `output` you find the output from models, figures and table.
